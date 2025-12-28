@@ -120,6 +120,11 @@ footer {
         height: 300px;
         margin: auto;
     }
+
+    footer p {
+        margin: auto;
+        text-align: center;
+    }
 }
 
 /* Telas médias */
