@@ -1,0 +1,25 @@
+#card {
+    margin-top: 50px;
+}
+
+.card {
+    margin-top: 5px;
+}
+
+footer {
+    margin-top: 360px;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) { 
+    .card {
+    margin-top: 5px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
+    footer {
+        margin-top: 400px;
+    }
+}
