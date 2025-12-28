@@ -9,10 +9,6 @@ main {
 
 }
 
-.navbar-brand span{
-    display: none;
-}
-
 #imagem {
     display: flex;
     margin-top: 10px;
@@ -204,6 +200,10 @@ footer {
 
 /* Telas grandes */
 @media (min-width: 1025px) {
+
+    .navbar-brand span{
+        display: none;
+    }
 
     #imagem {
         background-image: url(../Imagens/teste.png);
