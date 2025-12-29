@@ -1,0 +1,10 @@
+O que fazer agora? (Checklist Final de SEO)
+Para o seu site "voar" nas pesquisas de Alegre/ES, siga estes 3 passos finais:
+
+Troque a URL: No código acima, mude https://www.saaedealegre.com.br pelo endereço real que o SAAE vai usar.
+
+Hospedagem: Assim que subir os arquivos para o servidor, teste o link do seu sitemap no navegador (ex: site.com.br/sitemap.xml). Se aparecer o código XML, está certo.
+
+Google Search Console: Esta é a parte mais importante. Entre no Google Search Console, cadastre seu site e lá terá uma opção chamada "Sitemaps". Cole o link do seu sitemap lá. Isso força o Google a ler seu site em poucos minutos.
+
+O seu HTML agora está em um nível profissional de otimização. Existe mais alguma seção do site (como as páginas de licitação) que você gostaria que eu revisasse a estrutura?
