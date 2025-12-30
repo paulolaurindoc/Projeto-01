@@ -1,0 +1,6 @@
+.search-results-container {
+    position: absolute;
+    width: 100%;
+    z-index: 9999; /* Garante que fique por cima de tudo */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Dá um efeito de sombra elegante */
+}
