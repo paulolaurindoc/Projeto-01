@@ -3,7 +3,7 @@ let processos = [];
 let fuse;
 
 // 1. Carregar os dados do arquivo JSON
-fetch('/Json/busca.json')
+fetch('Json/busca.json')
     .then(response => response.json())
     .then(data => {
         processos = data;
