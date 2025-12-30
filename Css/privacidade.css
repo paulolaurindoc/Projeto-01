@@ -1,0 +1,20 @@
+        :root {
+            --primary-color: #0056b3;
+        }
+
+        .policy-content h4 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .policy-content p,
+        .policy-content li {
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .card-lgpd {
+            border-left: 5px solid var(--primary-color);
+            background: #f8f9fa;
+        }
