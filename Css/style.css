@@ -79,7 +79,6 @@ footer p {
     }
 
     #imagem {
-        background-color: blue;
         height: 300px;
     }
 
@@ -158,7 +157,7 @@ footer p {
     }
 
     #imagem {
-        background-color: green;
+
         height: 400px;
     }
 
@@ -209,12 +208,17 @@ footer p {
     }
 }
 
-/* Telas grandes */
-@media (min-width: 1025px) {
 
+@media (min-width: 1197px) {
     .navbar-brand span {
         display: none;
     }
+}
+
+/* Telas grandes */
+@media (min-width: 1025px) {
+
+
 
     #imagem {
         background-image: url(../Imagens/teste.png);
@@ -239,7 +243,6 @@ footer p {
     }
 
     #imagem {
-        background-color: red;
         height: 500px;
     }
 
