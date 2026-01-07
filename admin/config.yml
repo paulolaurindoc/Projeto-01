@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  repo: paulolaurindoc/Projeto-01
+  branch: main
+
+media_folder: "assets/uploads"
+# O public_folder deve ser o caminho que o navegador usará para achar o arquivo.
+# Geralmente é o mesmo que o media_folder ou começando da raiz /
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "config"
+    label: "Gerenciar Conteúdo"
+    delete: false # Evita deletar o arquivo principal sem querer
+    editor:
+      preview: false
+    files:
+      - name: "lista_licitacoes"
+        label: "Licitações e Contratos"
+        file: "data/licitacoes.json" # O CMS vai criar este arquivo JSON para você
+        fields:
+          - label: "Licitações"
+            name: "itens"
+            widget: "list" # Isso cria o botão (+) Adicionar para você
+            fields:
+              - {label: "Título da Licitação", name: "titulo", widget: "string"}
+              - {label: "Data de Publicação", name: "data", widget: "date", format: "DD/MM/YYYY"}
+              - {label: "Documento PDF", name: "arquivo", widget: "file"}
+              - {label: "Descrição Curta", name: "descricao", widget: "text", required: false}
