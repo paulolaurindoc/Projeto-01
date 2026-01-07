@@ -1,17 +1,26 @@
 backend:
   name: git-gateway
-  branch: main # Verifique se sua branch no GitHub é 'main' ou 'master'
+  branch: main
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "lista_licitacoes"
-    label: "Licitações e Contratos"
-    file: "licitacoes.json"
-    folder: "data/licitacoes" # O CMS criará arquivos aqui
-    create: true
-    format: "json" # Força o formato JSON
-    fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Arquivo PDF", name: "pdf", widget: "file"}
+  - name: "config"
+    label: "Conteúdo do Site"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "licitacoes_data"
+        label: "Lista de Licitações"
+        file: "licitacoes.json" # O arquivo que o seu JS vai ler
+        fields:
+          - label: "Itens de Licitação"
+            name: "itens"
+            widget: "list"
+            fields:
+              - {label: "Título da Licitação", name: "titulo", widget: "string"}
+              - {label: "Data", name: "data", widget: "string"} # Para você digitar como quiser
+              - {label: "Descrição Curta", name: "descricao", widget: "text", required: false}
+              - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
