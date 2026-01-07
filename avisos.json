@@ -1,3 +1,11 @@
 {
-  "itens": []
+  "itens": [
+    {
+      "dia": "09",
+      "mes": "Janeiro",
+      "categoria": "Manutenção Programada",
+      "titulo": "Manutenção na Rua Todos os Santos",
+      "descricao": "Informamos que na data mencionada, haverá uma paralização no fornecimento de água, por conta de uma manutenção programada."
+    }
+  ]
 }
