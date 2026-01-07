@@ -1,5 +1,10 @@
 {
   "titulo_pagina": "Processo Seletivo 001/2020",
   "descricao": "Confira as convocações para o Processo Seletivo 001/2020.",
-  "convocacoes": []
+  "convocacoes": [
+    {
+      "titulo": "1ª Convocação de Teste",
+      "arquivo": "/assets/uploads/14164-2026-dispõe-sobre-o-horário-de-funcionamento-dos-serviços-públicos-municipais-durante-o-mês-de-janeiro-do-exercício-de-2026.pdf"
+    }
+  ]
 }
