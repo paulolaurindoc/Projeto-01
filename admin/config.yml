@@ -12,18 +12,21 @@ collections:
     editor:
       preview: false
     files:
+      # --- LICITAÇÕES ---
       - name: "licitacoes_data"
         label: "Lista de Licitações"
-        file: "licitacoes.json" # O arquivo que o seu JS vai ler
+        file: "licitacoes.json"
         fields:
           - label: "Itens de Licitação"
             name: "itens"
             widget: "list"
             fields:
               - {label: "Título da Licitação", name: "titulo", widget: "string"}
-              - {label: "Data", name: "data", widget: "string"} # Para você digitar como quiser
+              - {label: "Data", name: "data", widget: "string"}
               - {label: "Descrição Curta", name: "descricao", widget: "text", required: false}
               - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
+
+      # --- DISPENSAS ---
       - name: "dispensas_data"
         label: "Dispensas de Licitação"
         file: "dispensas.json"
@@ -36,6 +39,8 @@ collections:
               - {label: "Descrição/Objeto", name: "descricao", widget: "string"}
               - {label: "Prazo Limite", name: "prazo", widget: "string", hint: "Ex: 15 de Maio de 2025, às 10:00h"}
               - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
+
+      # --- AVISOS ---
       - name: "avisos_data"
         label: "Avisos e Comunicados"
         file: "avisos.json"
@@ -52,4 +57,38 @@ collections:
                 options: ["Manutenção Programada", "Informativo", "Urgência", "Edital"]
               - {label: "Título do Aviso", name: "titulo", widget: "string"}
               - {label: "Descrição Curta", name: "descricao", widget: "text"}
-              - {label: "Link Adicional (Opcional)", name: "link", widget: "string", required: false, hint: "Ex: tarifas.html"}
+              - {label: "Link Adicional (Opcional)", name: "link", widget: "string", required: false}
+
+      # --- PROCESSOS SELETIVOS (DENTRO DA MESMA COLEÇÃO DE FILES) ---
+      - label: "Processo Seletivo 2020"
+        name: "ps_2020"
+        file: "data/ps-2020.json"
+        fields: &ps_fields
+          - { label: "Título da Página", name: "titulo_pagina", widget: "string" }
+          - { label: "Descrição", name: "descricao", widget: "text" }
+          - label: "Convocações"
+            name: "convocacoes"
+            widget: "list"
+            fields:
+              - { label: "Título do Card", name: "titulo", widget: "string" }
+              - { label: "Arquivo PDF", name: "arquivo", widget: "file" }
+
+      - label: "Processo Seletivo 2021"
+        name: "ps_2021"
+        file: "data/ps-2021.json"
+        fields: *ps_fields
+
+      - label: "Processo Seletivo 2022"
+        name: "ps_2022"
+        file: "data/ps-2022.json"
+        fields: *ps_fields
+
+      - label: "Processo Seletivo 2023"
+        name: "ps_2023"
+        file: "data/ps-2023.json"
+        fields: *ps_fields
+
+      - label: "Processo Seletivo 2024"
+        name: "ps_2024"
+        file: "data/ps-2024.json"
+        fields: *ps_fields
