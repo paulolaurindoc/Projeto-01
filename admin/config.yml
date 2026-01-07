@@ -36,3 +36,20 @@ collections:
               - {label: "Descrição/Objeto", name: "descricao", widget: "string"}
               - {label: "Prazo Limite", name: "prazo", widget: "string", hint: "Ex: 15 de Maio de 2025, às 10:00h"}
               - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
+      - name: "avisos_data"
+        label: "Avisos e Comunicados"
+        file: "avisos.json"
+        fields:
+          - label: "Lista de Avisos"
+            name: "itens"
+            widget: "list"
+            fields:
+              - {label: "Dia (Número)", name: "dia", widget: "string", hint: "Ex: 15"}
+              - {label: "Mês (Texto)", name: "mes", widget: "string", hint: "Ex: MAI"}
+              - label: "Categoria"
+                name: "categoria"
+                widget: "select"
+                options: ["Manutenção Programada", "Informativo", "Urgência", "Edital"]
+              - {label: "Título do Aviso", name: "titulo", widget: "string"}
+              - {label: "Descrição Curta", name: "descricao", widget: "text"}
+              - {label: "Link Adicional (Opcional)", name: "link", widget: "string", required: false, hint: "Ex: tarifas.html"}

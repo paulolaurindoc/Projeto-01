@@ -9,10 +9,6 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/avisos.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/9dd2ff168e.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../Imagens/icone.png" type="image/x-icon">
     <title>Avisos e Comunicados</title>
 </head>
@@ -136,50 +132,12 @@
     </header>
 
     <main class="container my-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <h2 class="fw-bold mb-4"><i class="fas fa-bullhorn text-primary me-2"></i> Avisos e Comunicados</h2>
-                <p class="text-muted mb-5">Acompanhe as últimas atualizações sobre serviços, manutenções e editais do SAAE Alegre.</p>
-
-                <div class="card card-aviso shadow-sm mb-4">
-                    <div class="card-body d-flex">
-                        <div class="date-box pe-3 me-3">
-                            <span class="d-block fw-bold fs-4">00</span>
-                            <span class="text-uppercase small">Mês</span>
-                        </div>
-                        <div>
-                            <span class="badge badge-manutencao mb-2">Manutenção Programada</span>
-                            <h5 class="card-title fw-bold">Interrupção no abastecimento - Bairro Todos os Santos</h5>
-                            <p class="card-text text-muted">Devido a reparos na rede adutora, o abastecimento será interrompido das 00h às 00h nas ruas centrais.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-aviso shadow-sm mb-4">
-                    <div class="card-body d-flex">
-                        <div class="date-box pe-3 me-3">
-                            <span class="d-block fw-bold fs-4">00</span>
-                            <span class="text-uppercase small">Mês</span>
-                        </div>
-                        <div>
-                            <span class="badge badge-informativo mb-2">Informativo</span>
-                            <h5 class="card-title fw-bold">Nova Tabela Tarifária 0000</h5>
-                            <p class="card-text text-muted">Confira os novos valores das tarifas de água e esgoto que entrarão em vigor a partir de [Mês].</p>
-                            <a href="tarifas.html" class="btn btn-sm btn-outline-primary mt-2">Ler documento completo</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm bg-primary text-white p-4">
-                    <h5>Canais de Emergência</h5>
-                    <p class="small">Viu um vazamento na rua? Avise-nos agora:</p>
-                    <hr class="border-white">
-                    <p class="mb-1"><i class="fab fa-whatsapp me-2"></i>(28) 99991-5530</p>
-                    <p><i class="fas fa-phone me-2"></i>(28) 99886-5499</p>
-                </div>
+        <div class="col-lg-8" id="container-avisos">
+            <h2 class="fw-bold mb-4"><i class="fas fa-bullhorn text-primary me-2"></i> Avisos e Comunicados</h2>
+            <p class="text-muted mb-5">Acompanhe as últimas atualizações sobre serviços, manutenções e editais do SAAE Alegre.</p>
+    
+            <div id="lista-avisos-dinamicos">
+                <p class="text-center">Carregando avisos...</p>
             </div>
         </div>
     </main>
@@ -230,5 +188,51 @@
     <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script src="../Js/busca.js"></script>
+    <script>
+    async function carregarAvisos() {
+        try {
+            const response = await fetch('../avisos.json');
+            const data = await response.json();
+            const container = document.getElementById('lista-avisos-dinamicos');
+            container.innerHTML = ''; 
+
+            if (data.itens.length === 0) {
+                container.innerHTML = '<p class="text-muted">Nenhum aviso no momento.</p>';
+                return;
+            }
+
+            data.itens.forEach(item => {
+                // Define a cor da badge baseada na categoria
+                let badgeClass = item.categoria === 'Manutenção Programada' ? 'badge-manutencao' : 'badge-informativo';
+                
+                const html = `
+                    <div class="card card-aviso shadow-sm mb-4">
+                        <div class="card-body d-flex">
+                            <div class="date-box pe-3 me-3">
+                                <span class="d-block fw-bold fs-4">${item.dia}</span>
+                                <span class="text-uppercase small">${item.mes}</span>
+                            </div>
+                            <div>
+                                <span class="badge ${badgeClass} mb-2">${item.categoria}</span>
+                                <h5 class="card-title fw-bold">${item.titulo}</h5>
+                                <p class="card-text text-muted">${item.descricao}</p>
+                                ${item.link ? `<a href="${item.link}" class="btn btn-sm btn-outline-primary mt-2">Ler mais</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        } catch (error) {
+            console.error("Erro ao carregar avisos:", error);
+        }
+    }
+    window.onload = carregarAvisos;
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9dd2ff168e.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
