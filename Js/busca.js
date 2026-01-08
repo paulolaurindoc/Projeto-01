@@ -1,3 +1,5 @@
+
+
 // 1. Variáveis globais
 let fuse;
 let processos = [];
@@ -53,7 +55,7 @@ if (campoBusca) {
                 */
                 if (estaNaPastaHTML && linkFinal.startsWith('HTML/')) {
                     linkFinal = linkFinal.replace('HTML/', '');
-                } 
+                }
                 /* Se eu estiver na RAIZ e o link no JSON NÃO tiver "HTML/",
                    eu adiciono para ele saber onde entrar (exceto links externos http).
                 */
