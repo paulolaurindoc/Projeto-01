@@ -2,9 +2,11 @@
 let fuse;
 let processos = [];
 
-// 2. CAMINHO ABSOLUTO: O "/" no início garante que o Netlify ache o arquivo 
-// a partir da raiz, esteja você na index ou dentro de subpastas.
-const caminhoJson = '/Json/busca.json'; 
+// 2. DETECTOR DE CAMINHO: Verifica se estamos dentro da pasta "HTML"
+const estaNaPastaHTML = window.location.pathname.includes('/HTML/');
+
+// Define o caminho correto para o JSON baseado em onde o usuário está
+const caminhoJson = estaNaPastaHTML ? '../Json/busca.json' : './Json/busca.json';
 
 // 3. CARREGAR DADOS
 fetch(caminhoJson)
@@ -14,11 +16,12 @@ fetch(caminhoJson)
     })
     .then(data => {
         processos = data;
+        // Configura o Fuse.js
         fuse = new Fuse(processos, {
             keys: ['titulo'],
             threshold: 0.4
         });
-        console.log("Sistema de busca carregado via caminho absoluto!");
+        console.log("Sistema de busca carregado com sucesso!");
     })
     .catch(err => console.error("Falha no carregamento da busca:", err));
 
@@ -42,19 +45,23 @@ if (campoBusca) {
         if (resultados.length > 0) {
             resultados.forEach(res => {
                 const item = document.createElement('a');
-                let linkOriginal = res.item.link;
+                let linkFinal = res.item.link;
 
-                // AJUSTE DE LINK: Se o link não for externo (http), 
-                // garantimos que ele comece com "/" para funcionar em qualquer subpágina
-                if (!linkOriginal.startsWith('http')) {
-                    // Remove "HTML/" se já existir no início para evitar duplicidade,
-                    // e garante que comece com a pasta correta a partir da raiz.
-                    let limpo = linkOriginal.replace(/^HTML\//, '');
-                    item.href = `/HTML/${limpo}`; 
-                } else {
-                    item.href = linkOriginal;
+                /* AJUSTE DINÂMICO DE LINKS:
+                   Se o link no JSON for "HTML/arquivo.html" e eu já estiver na pasta HTML,
+                   eu preciso remover o "HTML/" para o link não ficar quebrado.
+                */
+                if (estaNaPastaHTML && linkFinal.startsWith('HTML/')) {
+                    linkFinal = linkFinal.replace('HTML/', '');
+                } 
+                /* Se eu estiver na RAIZ e o link no JSON NÃO tiver "HTML/",
+                   eu adiciono para ele saber onde entrar (exceto links externos http).
+                */
+                else if (!estaNaPastaHTML && !linkFinal.startsWith('HTML/') && !linkFinal.startsWith('http')) {
+                    linkFinal = 'HTML/' + linkFinal;
                 }
 
+                item.href = linkFinal;
                 item.className = 'list-group-item list-group-item-action';
                 item.innerText = res.item.titulo;
                 listaResultados.appendChild(item);
