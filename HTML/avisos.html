@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="../Imagens/icone.png" type="image/x-icon">
     <title>Avisos e Comunicados</title>
 </head>
+
 <body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-xl bg-primary" data-bs-theme="dark">
@@ -32,8 +33,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="https://www.facebook.com/alegre.es"
                                         target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                                <li><a class="dropdown-item" href="http://www.saaedealegre.com.br:2095/"
-                                        target="_blank"><i class="fas fa-envelope"></i> Email</a></li>
+                                <li><a class="dropdown-item" href="contato.html" target="_blank"><i
+                                            class="fas fa-envelope"></i> Email</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="https://alegre.agv.portalcwcsistemas.com.br/"
@@ -134,15 +135,16 @@
     <main class="container my-5">
         <div class="col-lg-8" id="container-avisos">
             <h2 class="fw-bold mb-4"><i class="fas fa-bullhorn text-primary me-2"></i> Avisos e Comunicados</h2>
-            <p class="text-muted mb-5">Acompanhe as últimas atualizações sobre serviços, manutenções e editais do SAAE Alegre.</p>
-    
+            <p class="text-muted mb-5">Acompanhe as últimas atualizações sobre serviços, manutenções e editais do SAAE
+                Alegre.</p>
+
             <div id="lista-avisos-dinamicos">
                 <p class="text-center">Carregando avisos...</p>
             </div>
         </div>
     </main>
 
-        <footer class="bg-primary text-white pt-5 pb-3" data-bs-theme="dark">
+    <footer class="bg-primary text-white pt-5 pb-3" data-bs-theme="dark">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -159,7 +161,8 @@
                         <li><a href="../index.html" class="text-white-50 text-decoration-none small">Início</a></li>
                         <li><a href="mapa-do-site.html" class="text-white-50 text-decoration-none small">Mapa do
                                 Site</a></li>
-                        <li><a href="privacidade.html" class="text-white-50 text-decoration-none small w-bold">Privacidade</a>
+                        <li><a href="privacidade.html"
+                                class="text-white-50 text-decoration-none small w-bold">Privacidade</a>
                         </li>
                     </ul>
                 </div>
@@ -183,27 +186,32 @@
     </footer>
 
 
-    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script src="../Js/busca.js"></script>
     <script>
-    async function carregarAvisos() {
-        try {
-            const response = await fetch('../avisos.json');
-            const data = await response.json();
-            const container = document.getElementById('lista-avisos-dinamicos');
-            container.innerHTML = ''; 
+        async function carregarAvisos() {
+            try {
+                const response = await fetch('../avisos.json');
+                const data = await response.json();
+                const container = document.getElementById('lista-avisos-dinamicos');
+                container.innerHTML = '';
 
-            if (data.itens.length === 0) {
-                container.innerHTML = '<p class="text-muted">Nenhum aviso no momento.</p>';
-                return;
-            }
+                if (data.itens.length === 0) {
+                    container.innerHTML = '<p class="text-muted">Nenhum aviso no momento.</p>';
+                    return;
+                }
 
-            data.itens.forEach(item => {
-                // Define a cor da badge baseada na categoria
-                let badgeClass = item.categoria === 'Manutenção Programada' ? 'badge-manutencao' : 'badge-informativo';
-                
-                const html = `
+                data.itens.forEach(item => {
+                    // Define a cor da badge baseada na categoria
+                    let badgeClass = item.categoria === 'Manutenção Programada' ? 'badge-manutencao' : 'badge-informativo';
+
+                    const html = `
                     <div class="card card-aviso shadow-sm mb-4">
                         <div class="card-body d-flex">
                             <div class="date-box pe-3 me-3">
@@ -219,14 +227,14 @@
                         </div>
                     </div>
                 `;
-                container.innerHTML += html;
-            });
-        } catch (error) {
-            console.error("Erro ao carregar avisos:", error);
+                    container.innerHTML += html;
+                });
+            } catch (error) {
+                console.error("Erro ao carregar avisos:", error);
+            }
         }
-    }
-    window.onload = carregarAvisos;
-</script>
+        window.onload = carregarAvisos;
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
@@ -234,4 +242,5 @@
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 </body>
+
 </html>
