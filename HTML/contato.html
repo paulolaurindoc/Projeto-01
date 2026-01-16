@@ -22,13 +22,18 @@
             <h1 class="text-center">Envia sua mensagem para nós!</h1>
 
             <form action="https://formspree.io/f/xvzgenel" method="POST">
+                <input type="hidden" name="_language" value="pt-BR" />
+                <label for="form-label">
+                    Assunto
+                    <input name="subject" class="form-control" id="assunto" placeholder="Escreva aqui o assunto do Email" required/>
+                </label>
                 <label class="form-label">
                     Endereço de Email
-                    <input class="form-control" type="email" name="email" id="email" placeholder="nome@exemplo.com">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="nome@exemplo.com" required>
                 </label>
                 <label class="form-label">
                     Mensagem
-                    <textarea name="message" class="form-control" placeholder="Escreva sua mensagem"></textarea>
+                    <textarea name="message" class="form-control" placeholder="Escreva sua mensagem" required></textarea>
                 </label>
                 <button type="submit" class="btn btn-primary" id="btn">Enviar</button>
             </form>
@@ -75,6 +80,13 @@
             </div>
         </div>
     </footer>
+    <script>
+        window.onbeforeunload = () => {
+            for(const form of document.getElementsByTagName('form')) {
+            form.reset();
+            }
+        }
+    </script>
 </body>
 
 </html>
