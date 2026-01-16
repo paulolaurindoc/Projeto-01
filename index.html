@@ -101,8 +101,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="https://www.facebook.com/alegre.es"
                                         target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                                <li><a class="dropdown-item" href="HTML/contato.html"
-                                        target="_blank"><i class="fas fa-envelope"></i> Email</a></li>
+                                <li><a class="dropdown-item" href="HTML/contato.html" target="_blank"><i
+                                            class="fas fa-envelope"></i> Email</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="https://alegre.agv.portalcwcsistemas.com.br/"
@@ -288,7 +288,8 @@
                 <div class="col-md-4 mb-4 text-center" id="contato">
                     <h6 class="text-uppercase fw-bold mb-3 mt-3">Contato</h6>
                     <p class="small text-muted mb-1 info-contato"><i class="fas fa-phone me-2 "></i>(28) 99991-5530</p>
-                    <p class="small text-muted info-contato"><i class="fas fa-envelope me-2"></i>saae@alegre.es.gov.br</p>
+                    <p class="small text-muted info-contato"><i class="fas fa-envelope me-2"></i>saae@alegre.es.gov.br
+                    </p>
                 </div>
             </div>
 
@@ -296,7 +297,8 @@
 
             <div class="row mt-3">
                 <div class="col text-center">
-                    <p class="small text-muted mb-0 fw-bold text-center">© 2025 SAAE - Alegre/ES. Todos os direitos reservados.</p>
+                    <p class="small text-muted mb-0 fw-bold text-center">© 2025 SAAE - Alegre/ES. Todos os direitos
+                        reservados.</p>
                 </div>
             </div>
         </div>
@@ -325,7 +327,26 @@
                 }
             });
         }
+
+        document.addEventListener('click', function (event) {
+            const header = document.querySelector('.navbar');
+            const navbarCollapse = document.getElementById('navbarSupportedContent');
+            const toggler = document.querySelector('.navbar-toggler');
+
+            // Verifica se o clique foi fora do elemento <header>
+            const isClickInsideHeader = header.contains(event.target);
+
+            // Verifica se o menu está expandido (aberto)
+            // O Bootstrap muda o 'aria-expanded' para true quando abre
+            const isMenuOpen = toggler.getAttribute('aria-expanded') === 'true';
+
+            if (!isClickInsideHeader && isMenuOpen) {
+                // Simula o clique no botão para fechar o menu
+                toggler.click();
+            }
+        });
     </script>
+
 
 </body>
 

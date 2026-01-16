@@ -228,4 +228,25 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script src="../Js/busca.js"></script>
+    <script>
+
+    document.addEventListener('click', function (event) {
+    const header = document.querySelector('.navbar');
+    const navbarCollapse = document.getElementById('navbarSupportedContent');
+    const toggler = document.querySelector('.navbar-toggler');
+
+    // Verifica se o clique foi fora do elemento <header>
+    const isClickInsideHeader = header.contains(event.target);
+    
+    // Verifica se o menu está expandido (aberto)
+    // O Bootstrap muda o 'aria-expanded' para true quando abre
+    const isMenuOpen = toggler.getAttribute('aria-expanded') === 'true';
+
+    if (!isClickInsideHeader && isMenuOpen) {
+        // Simula o clique no botão para fechar o menu
+        toggler.click();
+        }
+    }); 
+
+    </script>
 </body>
