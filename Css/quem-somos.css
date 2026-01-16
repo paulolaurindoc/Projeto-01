@@ -1,5 +1,6 @@
 
 
+
 /* Telas pequenas e médias */
 @media (max-width: 1024px) {
 
@@ -18,12 +19,12 @@
         margin: 0 15px 10px 15px;
     }
 
-    h6 {
+    body h6 {
         text-align: center;
         margin: 20px 15px 10px 15px;
     }
 
-    p {
+    body p {
         text-align: justify;
         margin: 0 15px 15px 15px;
         text-indent: 20px;
@@ -50,6 +51,43 @@
     ul li {
         margin-bottom: 10px;
     }
+
+    footer {
+        align-items: center;
+        text-align: center;
+    }
+
+    footer ul {
+        text-align: center;
+    }
+
+    footer div {
+        align-items: center;
+        text-align: center;
+    }
+
+    footer h6 {
+        text-align: center;
+    }
+
+
+    #contato {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: -42px;
+    }
+
+
+    #contato p {
+        display: flex;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+
+
 }
 
 /* Telas grandes */
@@ -112,5 +150,19 @@
 
     .quem-somos ul li {
         margin-bottom: 10px;
+    }
+
+
+    #contato {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #contato p {
+        display: flex;
+        margin-top: 10px;
+        text-align: justify;
     }
 }
