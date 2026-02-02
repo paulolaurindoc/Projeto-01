@@ -92,3 +92,22 @@ collections:
         name: "ps_2024"
         file: "data/ps-2024.json"
         fields: *ps_fields
+
+      # --- ANÁLISES DE ÁGUA ---
+      - name: "analise_data"
+        label: "Análises de Água"
+        file: "analise.json"
+        fields:
+          - label: "Anos de Análise"
+            name: "itens"
+            widget: "list"
+            summary: '{{fields.ano}}'
+            fields:
+              - {label: "Ano (Título)", name: "ano", widget: "string", hint: "Ex: Análise 2024"}
+              - label: "Meses e Arquivos"
+                name: "meses"
+                widget: "list"
+                summary: '{{fields.nome}}'
+                fields:
+                  - {label: "Mês", name: "nome", widget: "string", hint: "Ex: Janeiro"}
+                  - {label: "Arquivo PDF", name: "arquivo", widget: "file"}

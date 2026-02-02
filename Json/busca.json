@@ -14,5 +14,6 @@
             { "titulo": "Prestação de Contas", "link": "HTML/prestacao-contas.html" },
             { "titulo": "Receitas e Despesas", "link": "HTML/receitas-despesas.html" },
             { "titulo": "Mapa do Site", "link": "HTML/mapa-do-site.html" },
-            { "titulo": "Privacidade", "link": "HTML/privacidade.html" }
+            { "titulo": "Privacidade", "link": "HTML/privacidade.html" },
+            { "titulo": "Análise de Água", "link": "HTML/analise-agua.html" }
 ]
