@@ -3,21 +3,33 @@
     {
       "ano": "Análise 2024",
       "meses": [
-        { "nome": "Janeiro", "arquivo": "" },
-        { "nome": "Fevereiro", "arquivo": "" }
+        { "nome": "Abril", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_ABRIL_2024.pdf" },
+        { "nome": "Maio", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_MAIO_2024.pdf" },
+        { "nome": "Junho", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_JUNHO_2024.pdf" },
+        { "nome": "Julho", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_JULHO_2024.pdf" },
+        { "nome": "Agosto", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_AGOSTO_2024.pdf" },
+        { "nome": "Setembro", "arquivo": "/assets/uploads/Analise-2024/ANLISES_DE_AGUA_MES_SETEMBRO_2024.pdf" }
       ]
     },
     {
       "ano": "Análise 2023",
       "meses": [
-        { "nome": "Dezembro", "arquivo": "/assets/uploads/14164-2026-dispõe-sobre-o-horário-de-funcionamento-dos-serviços-públicos-municipais-durante-o-mês-de-janeiro-do-exercício-de-2026.pdf" }
+        { "nome": "Janeiro", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_JANEIRO_2023.pdf" },
+        { "nome": "Fevereiro", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_FEVEREIRO_2023.pdf" },
+        { "nome": "Março", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_MARCO_2023.pdf" },
+        { "nome": "Abril, Maio e Junho", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_ABRIL_MAIO_JUNHO_2023.pdf" },
+        { "nome": "Agosto", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_AGOSTO_2023.pdf" },
+        { "nome": "Setembro", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_SETEMBRO_2023.pdf" },
+        { "nome": "Outubro", "arquivo": "/assets/uploads/Analise-2023/ANLISES_DE_AGUA_MES_OUTUBRO_2023.pdf" }
       ]
     },
     {
       "ano": "Análise 2022",
       "meses": [
-        { "nome": "Novembro", "arquivo": "" },
-        { "nome": "Outubro", "arquivo": "" }
+        { "nome": "Setembro", "arquivo": "/assets/uploads/Analise-2022/ANLISES_DE_AGUA_MES_SETEMBRO_2022.pdf" },
+        { "nome": "Outubro", "arquivo": "/assets/uploads/Analise-2022/ANLISES_DE_AGUA_MES_OUTUBRO_2022.pdf" },
+        { "nome": "Novembro", "arquivo": "/assets/uploads/Analise-2022/ANLISES_DE_AGUA_MES_NOVEMBRO_2022.pdf" },
+        { "nome": "Dezembro", "arquivo": "/assets/uploads/Analise-2022/ANLISES_DE_AGUA_MES_DEZEMBRO_2022.pdf" }
       ]
     }
 
