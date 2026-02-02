@@ -1,16 +1,24 @@
 {
   "itens": [
     {
-      "titulo": "Teste 001",
-      "data": "07/01/2026",
-      "descricao": "Isso é um teste!",
-      "arquivo": "/assets/uploads/14164-2026-dispõe-sobre-o-horário-de-funcionamento-dos-serviços-públicos-municipais-durante-o-mês-de-janeiro-do-exercício-de-2026.pdf"
+      "titulo": "PREGÃO ELETRÔNICO nº 005/2025: VEÍCULO PICK UP CABINE SIMPLES",
+      "inicio_propostas": "08H:00M DO DIA 22/10/2025 (HORÁRIO DE BRASÍLIA)",
+      "limite_impugnacao": "23H:59M DO DIA 30/10/2025 (HORÁRIO DE BRASÍLIA)",
+      "fim_propostas": "08H:00M DO DIA 04/11/2025 (HORÁRIO DE BRASÍLIA)",
+      "abertura_sessao": " 08H:01M DO DIA 04/11/2025 (HORÁRIO DE BRASÍLIA)",
+      "modo_disputa": "Aberto/Fechado",
+      "arquivo": "/assets/uploads/Editais-Licitacao/EDITAL_PREGO_RP_005_2025_-_VECULOS.pdf",
+      "termo_referencia": "/assets/uploads/Termo-Ref/TERMO_REFERNCIA-005-2025.pdf"
     },
     {
       "titulo": "Teste 002",
-      "data": "07/01/2026",
-      "descricao": "Isso também é um teste",
-      "arquivo": "/assets/uploads/14164-2026-dispõe-sobre-o-horário-de-funcionamento-dos-serviços-públicos-municipais-durante-o-mês-de-janeiro-do-exercício-de-2026.pdf"
+      "inicio_propostas": "15/02/2026 às 08:30h",
+      "limite_impugnacao": "10/02/2026 às 17:00h",
+      "fim_propostas": "14/02/2026 às 18:00h",
+      "abertura_sessao": "15/02/2026 às 09:30h",
+      "modo_disputa": "Aberto/Fechado",
+      "arquivo": "/assets/uploads/edital-completo-002.pdf",
+      "termo_referencia": "" 
     }
   ]
 }

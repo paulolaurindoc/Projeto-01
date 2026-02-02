@@ -196,59 +196,71 @@
     <script src="../Js/busca.js"></script>
 
     <script>
-        async function carregarDispensas() {
-            try {
-                const response = await fetch('../dispensas.json'); // Busca o novo arquivo
-                const data = await response.json();
-                const container = document.getElementById('accordionDispensas');
-                container.innerHTML = ''; // Limpa o "Carregando..."
+async function carregarDispensas() {
+    try {
+        const response = await fetch('../dispensas.json');
+        const data = await response.json();
+        const container = document.getElementById('accordionDispensas');
+        container.innerHTML = '';
 
-                if (data.itens.length === 0) {
-                    container.innerHTML = '<p class="text-center">Nenhuma dispensa publicada no momento.</p>';
-                    return;
-                }
-
-                data.itens.forEach((item, index) => {
-                    const id = `collapseDispensa${index}`;
-                    const heading = `headingDispensa${index}`;
-
-                    const html = `
-                    <div class="accordion-item mb-3 border">
-                        <h2 class="accordion-header" id="${heading}">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#${id}" aria-expanded="false" aria-controls="${id}">
-                                <div class="d-flex flex-column">
-                                    <span class="badge bg-success mb-1" style="width: fit-content;">Dispensa de Licitação</span>
-                                    <strong>${item.numero}</strong>
-                                    <small class="text-muted text-uppercase">${item.descricao}</small>
-                                    <small class="text-muted">As propostas adicionais serão recebidas até: <strong>${item.prazo}</strong></small>
-                                </div>
-                            </button>
-                        </h2>
-                        <div id="${id}" class="accordion-collapse collapse" aria-labelledby="${heading}"
-                            data-bs-parent="#accordionDispensas">
-                            <div class="accordion-body bg-light">
-                                <h6>Documentos do Processo:</h6>
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Aviso de Dispensa de Licitação (PDF)
-                                        <a href="..${item.arquivo}" class="btn btn-sm btn-outline-danger" target="_blank">Baixar PDF</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                    container.innerHTML += html;
-                });
-            } catch (error) {
-                console.error("Erro ao carregar dispensas:", error);
-                document.getElementById('accordionDispensas').innerHTML = '<p class="text-danger text-center">Erro ao carregar dados.</p>';
-            }
+        if (!data.itens || data.itens.length === 0) {
+            container.innerHTML = '<p class="text-center">Nenhuma dispensa publicada no momento.</p>';
+            return;
         }
 
-        // Inicia a função ao carregar a página
-        window.onload = carregarDispensas;
+        // Inverte para mostrar as mais recentes primeiro
+        const itensOrdenados = [...data.itens].reverse();
+
+        itensOrdenados.forEach((item, index) => {
+            const id = `collapseDispensa${index}`;
+            const heading = `headingDispensa${index}`;
+
+            const html = `
+            <div class="accordion-item mb-3 border shadow-sm">
+                <h2 class="accordion-header" id="${heading}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#${id}" aria-expanded="false" aria-controls="${id}">
+                        <div class="d-flex flex-column">
+                            <span class="badge bg-success mb-1" style="width: fit-content;">Dispensa de Licitação</span>
+                            <strong class="h5 mb-1">${item.numero}</strong>
+                            <small class="text-muted">
+                                <i class="far fa-clock me-1"></i> Prazo: <strong>${item.prazo}</strong>
+                            </small>
+                        </div>
+                    </button>
+                </h2>
+                <div id="${id}" class="accordion-collapse collapse" aria-labelledby="${heading}"
+                    data-bs-parent="#accordionDispensas">
+                    <div class="accordion-body bg-light">
+                        <div class="mb-3">
+                            <h6 class="fw-bold"><i class="fas fa-info-circle me-2"></i>Descrição / Objeto:</h6>
+                            <p class="text-dark small" style="text-align: justify;">${item.descricao}</p>
+                        </div>
+                        
+                        <hr>
+                        
+                        <h6>Documentos do Processo:</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-white">
+                                <span><i class="far fa-file-pdf text-danger me-2"></i>Aviso de Dispensa de Licitação</span>
+                                <a href="${item.arquivo}" class="btn btn-sm btn-danger" target="_blank">
+                                    <i class="fas fa-download me-1"></i> Visualizar PDF
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `;
+            container.innerHTML += html;
+        });
+    } catch (error) {
+        console.error("Erro ao carregar dispensas:", error);
+        document.getElementById('accordionDispensas').innerHTML = '<p class="text-danger text-center">Erro ao carregar dados.</p>';
+    }
+}
+
+window.onload = carregarDispensas;
 
     document.addEventListener('click', function (event) {
     const header = document.querySelector('.navbar');

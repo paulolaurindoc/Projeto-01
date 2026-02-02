@@ -6,108 +6,112 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "config"
-    label: "Conteúdo do Site"
-    delete: false
-    editor:
-      preview: false
-    files:
-      # --- LICITAÇÕES ---
-      - name: "licitacoes_data"
-        label: "Lista de Licitações"
-        file: "licitacoes.json"
+- name: "config"
+  label: "Conteúdo do Site"
+  delete: false
+  editor:
+    preview: false
+  files:
+  # --- LICITAÇÕES ---
+  - name: "licitacoes_data"
+    label: "Lista de Licitações"
+    file: "licitacoes.json"
+    fields:
+    - label: "Itens de Licitação"
+      name: "itens"
+      widget: "list"
+      fields:
+      - { label: "Título da Licitação", name: "titulo", widget: "string" }
+      - { label: "Início das Propostas", name: "inicio_propostas", widget: "string", hint: "Ex: 10/02/2026 às 09:00h" }
+      - { label: "Limite para Impugnação", name: "limite_impugnacao", widget: "string" }
+      - { label: "Fim das Propostas", name: "fim_propostas", widget: "string" }
+      - { label: "Abertura Sessão Pública", name: "abertura_sessao", widget: "string" }
+      - { label: "Modo de Disputa", name: "modo_disputa", widget: "string" }
+      - { label: "Arquivo do Edital (PDF)", name: "arquivo", widget: "file" }
+      - { label: "Termo de Referência (PDF)", name: "termo_referencia", widget: "file", required: false }
+
+  # --- DISPENSAS ---
+  - name: "dispensas_data"
+    label: "Dispensas de Licitação"
+    file: "dispensas.json"
+    fields:
+    - label: "Itens de Dispensa"
+      name: "itens"
+      widget: "list"
+      fields:
+      - { label: "Número da Dispensa", name: "numero", widget: "string", hint: "Ex: DISPENSA 001/2025" }
+      - { label: "Descrição/Objeto", name: "descricao", widget: "string" }
+      - { label: "Prazo Limite", name: "prazo", widget: "string", hint: "Ex: 15 de Maio de 2025, às 10:00h" }
+      - { label: "Arquivo PDF", name: "arquivo", widget: "file" }
+
+  # --- AVISOS ---
+  - name: "avisos_data"
+    label: "Avisos e Comunicados"
+    file: "avisos.json"
+    fields:
+    - label: "Lista de Avisos"
+      name: "itens"
+      widget: "list"
+      fields:
+      - { label: "Dia (Número)", name: "dia", widget: "string", hint: "Ex: 15" }
+      - { label: "Mês (Texto)", name: "mes", widget: "string", hint: "Ex: MAI" }
+      - label: "Categoria"
+        name: "categoria"
+        widget: "select"
+        options: [ "Manutenção Programada", "Informativo", "Urgência", "Edital" ]
+      - { label: "Título do Aviso", name: "titulo", widget: "string" }
+      - { label: "Descrição Curta", name: "descricao", widget: "text" }
+      - { label: "Link Adicional (Opcional)", name: "link", widget: "string", required: false }
+
+  # --- PROCESSOS SELETIVOS (DENTRO DA MESMA COLEÇÃO DE FILES) ---
+  - label: "Processo Seletivo 2020"
+    name: "ps_2020"
+    file: "data/ps-2020.json"
+    fields: &ps_fields
+      - { label: "Título da Página", name: "titulo_pagina", widget: "string" }
+      - { label: "Descrição", name: "descricao", widget: "text" }
+      - label: "Convocações"
+        name: "convocacoes"
+        widget: "list"
         fields:
-          - label: "Itens de Licitação"
-            name: "itens"
-            widget: "list"
-            fields:
-              - {label: "Título da Licitação", name: "titulo", widget: "string"}
-              - {label: "Data", name: "data", widget: "string"}
-              - {label: "Descrição Curta", name: "descricao", widget: "text", required: false}
-              - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
+        - { label: "Título do Card", name: "titulo", widget: "string" }
+        - { label: "Arquivo PDF", name: "arquivo", widget: "file" }
 
-      # --- DISPENSAS ---
-      - name: "dispensas_data"
-        label: "Dispensas de Licitação"
-        file: "dispensas.json"
+  - label: "Processo Seletivo 2021"
+    name: "ps_2021"
+    file: "data/ps-2021.json"
+    fields: *ps_fields
+
+  - label: "Processo Seletivo 2022"
+    name: "ps_2022"
+    file: "data/ps-2022.json"
+    fields: *ps_fields
+
+  - label: "Processo Seletivo 2023"
+    name: "ps_2023"
+    file: "data/ps-2023.json"
+    fields: *ps_fields
+
+  - label: "Processo Seletivo 2024"
+    name: "ps_2024"
+    file: "data/ps-2024.json"
+    fields: *ps_fields
+
+  # --- ANÁLISES DE ÁGUA ---
+  - name: "analise_data"
+    label: "Análises de Água"
+    file: "analise.json"
+    fields:
+    - label: "Anos de Análise"
+      name: "itens"
+      widget: "list"
+      summary: '{{fields.ano}}'
+      fields:
+      - { label: "Ano (Título)", name: "ano", widget: "string", hint: "Ex: Análise 2024" }
+      - label: "Meses e Arquivos"
+        name: "meses"
+        widget: "list"
+        summary: '{{fields.nome}}'
         fields:
-          - label: "Itens de Dispensa"
-            name: "itens"
-            widget: "list"
-            fields:
-              - {label: "Número da Dispensa", name: "numero", widget: "string", hint: "Ex: DISPENSA 001/2025"}
-              - {label: "Descrição/Objeto", name: "descricao", widget: "string"}
-              - {label: "Prazo Limite", name: "prazo", widget: "string", hint: "Ex: 15 de Maio de 2025, às 10:00h"}
-              - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
-
-      # --- AVISOS ---
-      - name: "avisos_data"
-        label: "Avisos e Comunicados"
-        file: "avisos.json"
-        fields:
-          - label: "Lista de Avisos"
-            name: "itens"
-            widget: "list"
-            fields:
-              - {label: "Dia (Número)", name: "dia", widget: "string", hint: "Ex: 15"}
-              - {label: "Mês (Texto)", name: "mes", widget: "string", hint: "Ex: MAI"}
-              - label: "Categoria"
-                name: "categoria"
-                widget: "select"
-                options: ["Manutenção Programada", "Informativo", "Urgência", "Edital"]
-              - {label: "Título do Aviso", name: "titulo", widget: "string"}
-              - {label: "Descrição Curta", name: "descricao", widget: "text"}
-              - {label: "Link Adicional (Opcional)", name: "link", widget: "string", required: false}
-
-      # --- PROCESSOS SELETIVOS (DENTRO DA MESMA COLEÇÃO DE FILES) ---
-      - label: "Processo Seletivo 2020"
-        name: "ps_2020"
-        file: "data/ps-2020.json"
-        fields: &ps_fields
-          - { label: "Título da Página", name: "titulo_pagina", widget: "string" }
-          - { label: "Descrição", name: "descricao", widget: "text" }
-          - label: "Convocações"
-            name: "convocacoes"
-            widget: "list"
-            fields:
-              - { label: "Título do Card", name: "titulo", widget: "string" }
-              - { label: "Arquivo PDF", name: "arquivo", widget: "file" }
-
-      - label: "Processo Seletivo 2021"
-        name: "ps_2021"
-        file: "data/ps-2021.json"
-        fields: *ps_fields
-
-      - label: "Processo Seletivo 2022"
-        name: "ps_2022"
-        file: "data/ps-2022.json"
-        fields: *ps_fields
-
-      - label: "Processo Seletivo 2023"
-        name: "ps_2023"
-        file: "data/ps-2023.json"
-        fields: *ps_fields
-
-      - label: "Processo Seletivo 2024"
-        name: "ps_2024"
-        file: "data/ps-2024.json"
-        fields: *ps_fields
-
-      # --- ANÁLISES DE ÁGUA ---
-      - name: "analise_data"
-        label: "Análises de Água"
-        file: "analise.json"
-        fields:
-          - label: "Anos de Análise"
-            name: "itens"
-            widget: "list"
-            summary: '{{fields.ano}}'
-            fields:
-              - {label: "Ano (Título)", name: "ano", widget: "string", hint: "Ex: Análise 2024"}
-              - label: "Meses e Arquivos"
-                name: "meses"
-                widget: "list"
-                summary: '{{fields.nome}}'
-                fields:
-                  - {label: "Mês", name: "nome", widget: "string", hint: "Ex: Janeiro"}
-                  - {label: "Arquivo PDF", name: "arquivo", widget: "file"}
+        - { label: "Mês", name: "nome", widget: "string", hint: "Ex: Janeiro" }
+        - { label: "Arquivo PDF", name: "arquivo", widget: "file" }
