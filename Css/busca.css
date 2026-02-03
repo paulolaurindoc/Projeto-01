@@ -1,6 +1,47 @@
-.search-results-container {
+#lista-resultados {
     position: absolute;
     width: 100%;
     z-index: 9999; /* Garante que fique por cima de tudo */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Dá um efeito de sombra elegante */
+    max-height: 250px; /* Define a altura máxima antes de surgir a rolagem */
+    overflow-y: auto;  /* Ativa a barra de rolagem vertical apenas se necessário */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+/* Container que envolve os resultados da pesquisa */
+.search-results-container {
+    max-height: 400px; /* Define a altura máxima antes de surgir a rolagem */
+    overflow-y: auto;  /* Ativa a barra de rolagem vertical apenas se necessário */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Deixa a barra de rolagem mais fina e elegante */
+.search-results-container::-webkit-scrollbar {
+    width: 8px;
+}
+.search-results-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+.search-results-container::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+}
+
+/*Tela de celular*/
+@media (max-width: 600px) {
+    #lista-resultados {
+        max-height: 200px; /* Ajusta a altura máxima para telas menores */
+    }
+    .search-results-container {
+        max-height: 300px; /* Ajusta a altura máxima para telas menores */
+    }
 }
