@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');
 
-body {
+html,body {
     font-family: 'Zalando Sans SemiExpanded', sans-serif;
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
-    margin: auto;
+    width: 100%;
+    flex: 1 0 auto;
 
 }
 
@@ -49,6 +54,11 @@ main, .content-wrapper {
     margin-top: 20px;
 }
 
+footer {
+    flex-shrink: 0; /* Impede o footer de "encolher" */
+    width: 100%;
+    /* Adicione suas cores de fundo aqui para visualizar melhor */
+}
 
 /* Telas pequenas */
 @media (max-width: 640px) {
@@ -124,6 +134,8 @@ main, .content-wrapper {
 
     footer {
         align-items: center;
+        flex-shrink: 0;
+        width: 100%;
     }
 
     footer div {
@@ -229,6 +241,8 @@ main, .content-wrapper {
 
     footer {
         align-items: center;
+        flex-shrink: 0;
+        width: 100%;
     }
 
     footer div {
@@ -336,6 +350,12 @@ main, .content-wrapper {
         width: 600px;
         height: 400px;
         margin: auto;
+    }
+
+    footer {
+        align-items: center;
+        flex-shrink: 0;
+        width: 100%;
     }
 
  
